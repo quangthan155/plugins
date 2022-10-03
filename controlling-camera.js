@@ -7,8 +7,8 @@ const html = `
   <style>
     html,body {
         margin: 0;
-        width: 500px;
-        height: 630px;
+        width: 300px;
+        height: 590px;
         background: #ffffffa6;
     }
     #wrapper {
@@ -26,35 +26,35 @@ const html = `
       <form class="form-horizontal">
       <div class="form-group">
         <label for="lng">Lng (°)</label>
-        <input class="form-control" type="number" id="lng" value="139.78" />
+        <input class="form-control" type="number" step=any id="lng" value="139.78" />
       </div>
       <div class="form-group">
         <label for="lng">Lat (°)</label>
-        <input class="form-control" type="number" id="lat" value="35.68" />
+        <input class="form-control" type="number" step=any id="lat" value="35.68" />
       </div>
       <div class="form-group">
         <label for="lng">Height (m)</label>
-        <input class="form-control" type="number" id="height" value="10000" /> 
+        <input class="form-control" type="number" step=any id="height" value="10000" /> 
       </div>
       <div class="form-group">
         <label for="lng">Heading</label>
-        <input class="form-control" type="number" id="heading" value="0" step="0.1"/>
+        <input class="form-control" type="number" step=any id="heading" value="0" step="0.1"/>
       </div>
       <div class="form-group">
         <label for="lng">Pitch</label>
-        <input class="form-control" type="number" id="pitch" value="-1.5" step="0.1"/>
+        <input class="form-control" type="number" step=any id="pitch" value="-1.5" step="0.1"/>
       </div>
       <div class="form-group">
         <label for="lng">Roll (work for fly to)</label>
-        <input class="form-control" type="number" id="roll" value="0" step="0.1"/>
+        <input class="form-control" type="number" step=any id="roll" value="0" step="0.1"/>
       </div>
       <div class="form-group">
         <label for="lng">Range (work for look at) (m) </label>
-        <input class="form-control" type="number" id="range" value="10000" />
+        <input class="form-control" type="number" step=any id="range" value="10000" />
       </div>
       <div class="form-group">
         <label for="lng">Duration:(work for look at) (s)</label>
-        <input class="form-control" type="number" id="duration" value="2" step="0.1"/>
+        <input class="form-control" type="number" step=any id="duration" value="2" step="0.1"/>
       </div>
       <div id="form-btn">
       <button class="btn btn-primary" id="fly">Fly to</button> 
