@@ -1,30 +1,66 @@
 const html = `
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <style>
     html,body {
         margin: 0;
-        width: 350px;
-        background: white;
+        width: 500px;
+        height: 630px;
+        background: #ffffffa6;
     }
     #wrapper {
         height: 100%;
-        padding: 12px;
+        padding: 15px;
         box-sizing: border-box;
     }
-    input {
-        width: 60px;
+    #form-btn {
+        margin-top: 15px;
     }
   </style>
 
   <div id="wrapper">
-    <p>lng: <input type="number" id="lng" value="139.78" />°</p>
-    <p>lat: <input type="number" id="lat" value="35.68" />°</p>
-    <p>height: <input type="number" id="height" value="10000" /> m</p>
-    <p>heading: <input type="number" id="heading" value="0" step="0.1"/></p>
-    <p>pitch: <input type="number" id="pitch" value="-1.5" step="0.1"/></p>
-    <p>roll:(work for fly to) <input type="number" id="roll" value="0" step="0.1"/></p>
-    <p>range:(work for look at) <input type="number" id="range" value="10000" /> m</p>
-    <p>duration: <input type="number" id="duration" value="2" /> s</p>
-    <p><button id="fly">Fly to</button> <button id="look">Look at</button></p>
+    <div class="col-md-12">
+      <form class="form-horizontal">
+      <div class="form-group">
+        <label for="lng">Lng (°)</label>
+        <input class="form-control" type="number" id="lng" value="139.78" />
+      </div>
+      <div class="form-group">
+        <label for="lng">Lat (°)</label>
+        <input class="form-control" type="number" id="lat" value="35.68" />
+      </div>
+      <div class="form-group">
+        <label for="lng">Height (m)</label>
+        <input class="form-control" type="number" id="height" value="10000" /> 
+      </div>
+      <div class="form-group">
+        <label for="lng">Heading</label>
+        <input class="form-control" type="number" id="heading" value="0" step="0.1"/>
+      </div>
+      <div class="form-group">
+        <label for="lng">Pitch</label>
+        <input class="form-control" type="number" id="pitch" value="-1.5" step="0.1"/>
+      </div>
+      <div class="form-group">
+        <label for="lng">Roll (work for fly to)</label>
+        <input class="form-control" type="number" id="roll" value="0" step="0.1"/>
+      </div>
+      <div class="form-group">
+        <label for="lng">Range (work for look at) (m) </label>
+        <input class="form-control" type="number" id="range" value="10000" />
+      </div>
+      <div class="form-group">
+        <label for="lng">Duration:(work for look at) (s)</label>
+        <input class="form-control" type="number" id="duration" value="2" step="0.1"/>
+      </div>
+      <div id="form-btn">
+      <button class="btn btn-primary" id="fly">Fly to</button> 
+      <button class="btn btn-success" id="look">Look at</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -38,7 +74,9 @@ const html = `
       range: parseFloat(document.getElementById("range").value||0),
       duration: parseFloat(document.getElementById("duration").value||0),
     });
+    $(document).ready(function(){
 
+    });
     document.getElementById("fly").addEventListener("click", () => {
       parent.postMessage({ fly: getValues() }, "*");
     });
