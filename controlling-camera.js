@@ -26,11 +26,11 @@ const html = `
       <form class="form-horizontal">
       <div class="form-group">
         <label for="lng">Lng (°)</label>
-        <input class="form-control" type="number" step=any id="lng" value="139.78" />
+        <input class="form-control" type="number" step=any id="lng" value="" />
       </div>
       <div class="form-group">
         <label for="lng">Lat (°)</label>
-        <input class="form-control" type="number" step=any id="lat" value="35.68" />
+        <input class="form-control" type="number" step=any id="lat" value="" />
       </div>
       <div class="form-group">
         <label for="lng">Height (m)</label>
