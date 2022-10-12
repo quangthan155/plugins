@@ -9,15 +9,20 @@ const html = `
   <script>
   const czml = [
     {
+      id: "document",
+      name: "CZML Model",
+      version: "1.0",
+    },
+    {
       id: "aircraft model",
       name: "Cesium Air",
       position: {
         cartographicDegrees: [-77, 37, 10000],
       },
       model: {
-        gltf: "https://reeath.000webhostapp.com/windturbine.glb",
-        scale: 4.0,
-        minimumPixelSize: 1008,
+        gltf: "../3d/windturbine.glb",
+        scale: 2.0,
+        minimumPixelSize: 128,
       },
     },
   ];
@@ -26,6 +31,9 @@ const html = `
     shouldAnimate: true,
   });
   
+  const dataSourcePromise = viewer.dataSources.add(
+    Cesium.CzmlDataSource.load(czml)
+  );
   
   dataSourcePromise
     .then(function (dataSource) {
