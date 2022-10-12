@@ -1,82 +1,43 @@
 
 const html = `
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.98/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.98/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <style>
   
-    @import url(https://sandcastle.cesium.com/templates/bucket.css);
 
   </style>
-  <div id="cesiumContainer" class="fullSize"></div>
-  <div id="loadingOverlay"><h1>Loading...</h1></div>
-  <div id="toolbar"></div>
   <script>
-  const viewer = new Cesium.Viewer("cesiumContainer", {
-    infoBox: false,
-    selectionIndicator: false,
-    shadows: true,
-    shouldAnimate: true,
-  });
-  
-  function createModel(url, height) {
-    viewer.entities.removeAll();
-  
-    const position = Cesium.Cartesian3.fromDegrees(
-      -123.0744619,
-      44.0503706,
-      height
-    );
-    const heading = Cesium.Math.toRadians(135);
-    const pitch = 0;
-    const roll = 0;
-    const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-    const orientation = Cesium.Transforms.headingPitchRollQuaternion(
-      position,
-      hpr
-    );
-  
-    const entity = viewer.entities.add({
-      name: url,
-      position: position,
-      orientation: orientation,
+  const czml = [
+    {
+      id: "aircraft model",
+      name: "Cesium Air",
+      position: {
+        cartographicDegrees: [-77, 37, 10000],
+      },
       model: {
-        uri: url,
-        minimumPixelSize: 128,
-        maximumScale: 20000,
-      },
-    });
-    viewer.trackedEntity = entity;
-  }
-  
-  const options = [
-    {
-      text: "Aircraft",
-      onselect: function () {
-        createModel(
-          "https://reeath.000webhostapp.com/windturbine.glb",
-          5000.0
-        );
-      },
-    },
-    {
-      text: "Drone",
-      onselect: function () {
-        createModel(
-          "https://sandcastle.cesium.com/SampleData/models/CesiumDrone/CesiumDrone.glb",
-          150.0
-        );
-      },
-    },
-    {
-      text: "Hot Air Balloon",
-      onselect: function () {
-        createModel(
-          "../3d/windturbin.glb",
-          1000.0
-        );
+        gltf: "https://reeath.000webhostapp.com/windturbine.glb",
+        scale: 4.0,
+        minimumPixelSize: 1008,
       },
     },
   ];
   
-  Sandcastle.addToolbarMenu(options);
+  const viewer = new Cesium.Viewer("cesiumContainer", {
+    shouldAnimate: true,
+  });
+  
+  
+  dataSourcePromise
+    .then(function (dataSource) {
+      viewer.trackedEntity = dataSource.entities.getById(
+        "aircraft model"
+      );
+    })
+    .catch(function (error) {
+      window.alert(error);
+    });
+  
+  
 
   </script>
   `;
