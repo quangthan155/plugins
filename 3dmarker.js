@@ -1,56 +1,44 @@
-
-const html = `
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.98/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.98/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-  <style>
-  
-
-  </style>
-  <script>
-  const czml = [
-    {
-      id: "document",
-      name: "CZML Model",
-      version: "1.0",
+const czml = [
+  {
+    id: "document",
+    name: "Basic CZML billboard and label",
+    version: "1.0",
+  },
+  {
+    id: "some-unique-id",
+    name: "AGI",
+    description:
+      "<p><a href='http://www.agi.com' target='_blank'>Analytical Graphics, Inc.</a> (AGI) founded Cesium.</p>",
+    billboard: {
+      image:
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACvSURBVDhPrZDRDcMgDAU9GqN0lIzijw6SUbJJygUeNQgSqepJTyHG91LVVpwDdfxM3T9TSl1EXZvDwii471fivK73cBFFQNTT/d2KoGpfGOpSIkhUpgUMxq9DFEsWv4IXhlyCnhBFnZcFEEuYqbiUlNwWgMTdrZ3JbQFoEVG53rd8ztG9aPJMnBUQf/VFraBJeWnLS0RfjbKyLJA8FkT5seDYS1Qwyv8t0B/5C2ZmH2/eTGNNBgMmAAAAAElFTkSuQmCC",
+      scale: 1.5,
     },
-    {
-      id: "aircraft model",
-      name: "Cesium Air",
-      position: {
-        cartographicDegrees: [-77, 37, 10000],
+    label: {
+      fillColor: {
+        rgba: [255, 255, 255, 255],
       },
-      model: {
-        gltf: "../3d/windturbine.glb",
-        scale: 2.0,
-        minimumPixelSize: 128,
+      font: "12pt Lucida Console",
+      horizontalOrigin: "LEFT",
+      pixelOffset: {
+        cartesian2: [8, 0],
+      },
+      style: "FILL",
+      text: "AGI",
+      showBackground: true,
+      backgroundColor: {
+        rgba: [112, 89, 57, 200],
       },
     },
-  ];
-  
-  const viewer = new Cesium.Viewer("cesiumContainer", {
-    shouldAnimate: true,
-  });
-  
-  const dataSourcePromise = viewer.dataSources.add(
-    Cesium.CzmlDataSource.load(czml)
-  );
-  
-  dataSourcePromise
-    .then(function (dataSource) {
-      viewer.trackedEntity = dataSource.entities.getById(
-        "aircraft model"
-      );
-    })
-    .catch(function (error) {
-      window.alert(error);
-    });
-  
-  
+    position: {
+      cartesian: [
+        1216361.4096947117,
+        -4736253.175342511,
+        4081267.4865667094,
+      ],
+    },
+  },
+];
 
-  </script>
-  `;
-
-
-  reearth.ui.show(html);
-
-
+const viewer = new Cesium.Viewer("cesiumContainer");
+viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
