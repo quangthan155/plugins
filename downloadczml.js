@@ -22,7 +22,7 @@ const html = `
   let modelUrl;
   let lat;
   let lng;
-  let czml;
+  const czml;
   let propertyData;
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
