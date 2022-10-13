@@ -53,11 +53,7 @@ const html = `
     }, 
   ];
 
-  function saveStaticDataToFile(czml) {
-    var blob = new Blob([czml],
-        { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "demo.czml");
-  }
+
   </script>
 `
 
