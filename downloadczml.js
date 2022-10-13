@@ -27,11 +27,11 @@ const html = `
     propertyData = e.data.property;
     
     if (property.hasOwnProperty('default') && property.default.modelSize) {
-      let modelSize = property.default.modelSize;
+      let modelSize = propertyData.default.modelSize;
     }
 
     if (property.hasOwnProperty('default') && property.default.modelUrl) {
-      let modelUrl = property.default.modelUrl;
+      let modelUrl = propertyData.default.modelUrl;
     }
   });
   console.log(markerData, propertyData);
