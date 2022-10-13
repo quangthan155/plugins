@@ -14,30 +14,22 @@ const html = `
     </style>
 
     <div id="wrapper">
+    <div id="msg"></div>
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
   <script>
-  var markerData;
-  var propertyData;
- 
+  let modelSize;
+  let modelUrl;
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
-
-    markerData = e.data.marker;
-    propertyData = e.data.propertyData;
-
-    if (propertyData.hasOwnProperty('form') && propertyData.default.modelSize) {
-      let modelSize = propertyData.form.modelSize;
-      
+    if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
+      console.log("Size="+ propertyData.default.modelSize);
     }
-
-    if (propertyData.hasOwnProperty('form') && propertyData.default.modelUrl) {
-      let modelUrl = propertyData.form.modelUrl;
-      
+    if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
+      console.log("Model="+ propertyData.default.modelUrl);
     }
- 
-    document.getElementById("download").addEventListener("click", myFunction(modelUrl, modelSize));
-    function myFunction(modelUrl, modelSize) {
+  });
+
       const czml = [ 
         { 
           id: "document", 
@@ -48,24 +40,29 @@ const html = `
           id: "aircraft model", 
           name: "Cesium Air", 
           position: { 
-              cartographicDegrees: [100 , 100],      
+              cartographicDegrees: [e.data.markerData.lat , e.data.markerData.lng],      
           }, 
           model: { 
             gltf: modelUrl,           
-            scale: modelSize,                                                
+            scale: modelSize,                                     
             minimumPixelSize:  128, 
           }, 
         }, 
       ];
 
-      saveStaticDataToFile(czml);
-    }
-  });
 
-  function saveStaticDataToFile(data) {
-    var blob = new Blob([data],
-        { type: "text/plain;charset=utf-8" });
-        FileSaver.saveAs(blob, "demo.czml");
+  document.getElementById("download").addEventListener("click", download("aa.czml", JSON.stringify(czml)));
+  function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
   }
   </script>
 `
@@ -77,7 +74,7 @@ const marker = reearth.layers.find(
   layer => layer.type === "marker"
 );
 
-console.log(marker.property.default.location);
+
   reearth.on("update", send);
   send();
   
