@@ -58,6 +58,16 @@ const marker = reearth.layers.find(
 //   property: reearth.widget.property
 // });
 
+reearth.on("update", send);
+send();
+
+function send() {
+  reearth.ui.postMessage({
+    marker: marker,,
+    property: reearth.widget.property
+  })
+}
+
 reearth.ui.postMessage({
   marker: marker,
   property: reearth.widget.property});
