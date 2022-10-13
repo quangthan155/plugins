@@ -26,15 +26,15 @@ const html = `
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
 
-
+    if (propertyData.hasOwnProperty('form') && propertyData.default.modelSize) {
       let modelSize = propertyData.form.modelSize;
       
-   
+    }
 
-
+    if (propertyData.hasOwnProperty('form') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.form.modelUrl;
       
-
+    }
  
     document.getElementById("download").addEventListener("click", myFunction(modelUrl, modelSize));
     function myFunction(modelUrl, modelSize) {
@@ -65,7 +65,7 @@ const html = `
   function saveStaticDataToFile(data) {
     var blob = new Blob([data],
         { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "demo.czml");
+        FileSaver.saveAs(blob, "demo.czml");
   }
   </script>
 `
