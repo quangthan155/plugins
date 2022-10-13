@@ -58,9 +58,11 @@ const html = `
     ];
 
     },false);
-    
-  document.getElementById("myBtn").onclick = download(JSON.stringify(czml));
-
+    document.getElementById("download").addEventListener("click", function(event){
+      event.preventDefault()
+      download(JSON.stringify(czml)
+    });
+ 
   function download(text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
