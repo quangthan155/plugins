@@ -48,7 +48,7 @@ const html = `
           id: "aircraft model", 
           name: "Cesium Air", 
           position: { 
-              cartographicDegrees: [markerData.property.default.location.lat , markerData.property.default.location.lng],      
+              cartographicDegrees: [markerData.lat , markerData.lng],      
           }, 
           model: { 
             gltf: modelUrl,           
