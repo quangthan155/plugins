@@ -26,11 +26,11 @@ const html = `
     markerData = e.data.markerLayer;
     propertyData = e.data.property;
     
-    if (property.hasOwnProperty('default') && property.default.modelSize) {
+    if (property.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
     }
 
-    if (property.hasOwnProperty('default') && property.default.modelUrl) {
+    if (property.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
   });
@@ -60,7 +60,7 @@ const marker = reearth.layers.find(
 
 reearth.on("update", send);
 send();
-
+console.log(marker, reearth.widget.property);
 function send() {
   reearth.ui.postMessage({
     markerLayer: marker,
