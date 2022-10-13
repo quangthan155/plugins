@@ -34,7 +34,7 @@ const html = `
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
-
+    console.log(modelUrl);
     document.getElementById("download").addEventListener("click", myFunction);
     function myFunction() {
       const czml = [ 
@@ -47,7 +47,7 @@ const html = `
           id: "aircraft model", 
           name: "Cesium Air", 
           position: { 
-              cartographicDegrees: [markerData.property.default.location.lat , markerData.property.default.location.lng],      
+              cartographicDegrees: [markerData.markerData.property.default.location.lat , markerData.markerData.property.default.location.lng],      
           }, 
           model: { 
             gltf: modelUrl,           
