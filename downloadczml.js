@@ -36,8 +36,8 @@ const html = `
       
     }
  
-    document.getElementById("download").addEventListener("click", myFunction);
-    function myFunction() {
+    document.getElementById("download").addEventListener("click", myFunction(modelUrl, modelSize));
+    function myFunction(modelUrl, modelSize) {
       const czml = [ 
         { 
           id: "document", 
