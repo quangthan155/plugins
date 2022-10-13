@@ -14,17 +14,18 @@ const html = `
     </style>
 
     <div id="wrapper">
-      <button id="download" type="button" onclick="saveStaticDataToFile()">DOWNLOAD CZML FILE</button>
+      <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
   <script>
   let marker;
   let property;
+  console.log(marker,property);
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
 
     marker = e.data.marker;
     property = e.data.property;
-    console.log(marker);
+    
     if (property.hasOwnProperty('default') && property.default.modelSize) {
       let modelSize = property.default.modelSize;
     }
@@ -33,27 +34,38 @@ const html = `
       let modelUrl = property.default.modelUrl;
     }
   }
-  const czml = [ 
-    { 
-      id: "document", 
-      name: "CZML Model", 
-      version: "1.0", 
-    }, 
-    { 
-       id: "aircraft model", 
-       name: "Cesium Air", 
-       position: { 
-          cartographicDegrees: [marker.property.default.location.lat, marker.property.default.location.lng],      
-       }, 
-       model: { 
-        gltf: modelUrl,           
-        scale: modelSize,                                                
-        minimumPixelSize:  128, 
+  document.getElementById("download").addEventListener("click", myFunction);
+
+  function myFunction() {
+    const czml = [ 
+      { 
+        id: "document", 
+        name: "CZML Model", 
+        version: "1.0", 
       }, 
-    }, 
-  ];
+      { 
+         id: "aircraft model", 
+         name: "Cesium Air", 
+         position: { 
+            cartographicDegrees: [marker.property.default.location.lat, marker.property.default.location.lng],      
+         }, 
+         model: { 
+          gltf: modelUrl,           
+          scale: modelSize,                                                
+          minimumPixelSize:  128, 
+        }, 
+      }, 
+    ];
+    saveStaticDataToFile(czml);
 
+  }
+  
 
+  function saveStaticDataToFile(data) {
+    var blob = new Blob([data],
+        { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "demo.czml");
+  }
   </script>
 `
 
