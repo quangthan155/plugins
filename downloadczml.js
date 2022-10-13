@@ -16,7 +16,16 @@ const html = `
     <div id="wrapper">
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
+    <script>
+    let marker;
+    let property;
+   
+    window.addEventListener("message", function (e) {
+      if (e.source !== parent) return;
+      console.log(marker,property);
 
+    }
+    </script>
 `
 
       
@@ -27,7 +36,7 @@ const marker = reearth.layers.find(
 );
 
 // Handle data to download
-// reearth.on("message", data => {
-//   marker: marker;
-//   property: reearth.widget.property
-// });
+reearth.on("message", data => {
+  marker: marker;
+  property: reearth.widget.property
+});
