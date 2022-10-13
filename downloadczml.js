@@ -16,26 +16,7 @@ const html = `
     <div id="wrapper">
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
-  <script>
-  let marker;
-  let property;
-  console.log(marker,property);
-  window.addEventListener("message", function (e) {
-    if (e.source !== parent) return;
 
-    marker = e.data.marker;
-    property = e.data.property;
-    
-    if (property.hasOwnProperty('default') && property.default.modelSize) {
-      let modelSize = property.default.modelSize;
-    }
-
-    if (property.hasOwnProperty('default') && property.default.modelUrl) {
-      let modelUrl = property.default.modelUrl;
-    }
-  }
-  </script>
-`
 
       
 reearth.ui.show(html);
@@ -45,7 +26,7 @@ const marker = reearth.layers.find(
 );
 
 // Handle data to download
-reearth.on("message", data => {
-  marker: marker;
-  property: reearth.widget.property
-});
+// reearth.on("message", data => {
+//   marker: marker;
+//   property: reearth.widget.property
+// });
