@@ -15,7 +15,7 @@ const html = `
 
     <div id="wrapper">
     <div id="msg"></div>
-      <button id="download" type="button">DOWNLOAD CZML FILE</button>
+      <button id="download" type="button" onclick=download()>DOWNLOAD CZML FILE</button>
     </div>
   <script>
   let modelSize;
@@ -36,7 +36,7 @@ const html = `
   
     lat - e.data.markerData.lat;
     lng - e.data.markerData.lng;  
-    });
+    },false);
     
     czml = [ 
       { 
@@ -58,8 +58,7 @@ const html = `
       }, 
     ];
 
-  document.getElementById("download").addEventListener("click", download("aa.czml", JSON.stringify(czml)));
-  function download(filename, text) {
+  function download("aaa.czml", JSON.stringify(czml)) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
@@ -70,6 +69,7 @@ const html = `
     element.click();
 
     document.body.removeChild(element);
+    
   }
   </script>
 `
