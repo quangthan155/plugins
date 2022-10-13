@@ -35,6 +35,7 @@ const html = `
     }
   
 
+  });
 
   function saveStaticDataToFile(data) {
     var blob = new Blob([data],
