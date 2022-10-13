@@ -77,7 +77,7 @@ const marker = reearth.layers.find(
   layer => layer.type === "marker"
 );
 
-console.log(markerThatTitleIsReearth.property.default.location);
+console.log(marker.property.default.location);
   reearth.on("update", send);
   send();
   
