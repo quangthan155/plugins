@@ -73,7 +73,9 @@ const html = `
 
 reearth.ui.show(html);
 
-const marker = reearth.layers.layers(0);
+const marker = reearth.layers.find(
+  layer => layer.type === "marker"
+);
 
 
   reearth.on("update", send);
