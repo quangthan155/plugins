@@ -17,14 +17,14 @@ const html = `
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
   <script>
-  let marker;
-  let property;
+  var markerData;
+  var propertyData;
  
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
 
-    marker = e.data.markerLayer;
-    property = e.data.property;
+    markerData = e.data.markerLayer;
+    propertyData = e.data.property;
     
     if (property.hasOwnProperty('default') && property.default.modelSize) {
       let modelSize = property.default.modelSize;
@@ -34,7 +34,7 @@ const html = `
       let modelUrl = property.default.modelUrl;
     }
   });
-  console.log(marker, property);
+  console.log(markerData, propertyData);
 
 
   function saveStaticDataToFile(data) {
