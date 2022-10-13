@@ -33,30 +33,7 @@ const html = `
     if (property.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
-  
-  document.getElementById("download").addEventListener("click", myFunction);
-    function myFunction() {
-      const czml = "[ 
-        { 
-          id: "document", 
-          name: "CZML Model", 
-          version: "1.0", 
-        }, 
-        { 
-          id: "aircraft model", 
-          name: "Cesium Air", 
-          position: { 
-              cartographicDegrees: ["+ marker.property.default.location.lat + "," + marker.property.default.location.lng +"],      
-          }, 
-          model: { 
-            gltf: modelUrl,           
-            scale: modelSize,                                                
-            minimumPixelSize:  128, 
-          }, 
-        }, 
-      ];
-      saveStaticDataToFile(czml);
-    }
+
   });
 
   function saveStaticDataToFile(data) {
