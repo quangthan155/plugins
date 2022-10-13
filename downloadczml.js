@@ -14,7 +14,7 @@ const html = `
     </style>
 
     <div id="wrapper">
-      <button id="download" type="button" onclick="saveStaticDataToFile(czml);>DOWNLOAD CZML FILE</button>
+      <button id="download" type="button" onclick="saveStaticDataToFile(czml)">DOWNLOAD CZML FILE</button>
     </div>
   <script>
   let marker;
