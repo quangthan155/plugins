@@ -14,7 +14,7 @@ const html = `
     </style>
 
     <div id="wrapper">
-      <button id="download" type="button" onclick="saveStaticDataToFile(czml)">DOWNLOAD CZML FILE</button>
+      <button id="download" type="button" onclick="saveStaticDataToFile()">DOWNLOAD CZML FILE</button>
     </div>
   <script>
   let marker;
@@ -33,7 +33,7 @@ const html = `
       let modelUrl = property.default.modelUrl;
     }
   }
-  const czml = "[ 
+  const czml = [ 
     { 
       id: "document", 
       name: "CZML Model", 
@@ -51,12 +51,12 @@ const html = `
         minimumPixelSize:  128, 
       }, 
     }, 
-  ]";
+  ];
 
-  function saveStaticDataToFile(data) {
-    var blob = new Blob([data],
+  function saveStaticDataToFile(czml) {
+    var blob = new Blob([czml],
         { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "static.txt");
+    saveAs(blob, "demo.czml");
   }
   </script>
 `
