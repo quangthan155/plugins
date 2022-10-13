@@ -20,6 +20,7 @@ const html = `
   <script>
   let modelSize;
   let modelUrl;
+  let czml;
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
@@ -28,9 +29,9 @@ const html = `
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
       console.log("Model="+ propertyData.default.modelUrl);
     }
-  });
+  
 
-      const czml = [ 
+       czml = [ 
         { 
           id: "document", 
           name: "CZML Model", 
@@ -49,7 +50,7 @@ const html = `
           }, 
         }, 
       ];
-
+    });
 
   document.getElementById("download").addEventListener("click", download("aa.czml", JSON.stringify(czml)));
   function download(filename, text) {
