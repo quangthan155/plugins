@@ -28,10 +28,10 @@ const html = `
     if (e.source !== parent) return;
     propertyData = e.data.propertyData;
     if (propertyData.hasOwnProperty('form') && propertyData.form.modelSize) {
-      modelSize = propertyData.default.modelSize;
+      modelSize = propertyData.form.modelSize;
     }
     if (propertyData.hasOwnProperty('form') && propertyData.form.modelUrl) {
-      modelUrl = propertyData.default.modelUrl;
+      modelUrl = propertyData.form.modelUrl;
     }
   
     lat = e.data.markerData.lat;
