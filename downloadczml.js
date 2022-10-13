@@ -25,7 +25,7 @@ const html = `
 
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
-    console.log(propertyData);
+    console.log(propertyData.default);
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
       
