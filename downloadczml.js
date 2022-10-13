@@ -37,7 +37,7 @@ const html = `
     }
  
     document.getElementById("download").addEventListener("click", myFunction);
-    function myFunction(markerData, modelUrl, modelSize) {
+    function myFunction() {
       const czml = [ 
         { 
           id: "document", 
@@ -77,7 +77,7 @@ const marker = reearth.layers.find(
   layer => layer.type === "marker"
 );
 
-
+console.log(markerThatTitleIsReearth.property.default.location);
   reearth.on("update", send);
   send();
   
