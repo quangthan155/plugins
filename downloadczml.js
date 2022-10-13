@@ -35,7 +35,7 @@ const html = `
     }
   });
   console.log(marker, property);
-  }
+
 
   function saveStaticDataToFile(data) {
     var blob = new Blob([data],
