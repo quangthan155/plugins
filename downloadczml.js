@@ -73,7 +73,7 @@ const html = `
 
 reearth.ui.show(html);
 
-const marker = reearth.layers.find(
+const marker = reearth.layers.findall(
   layer => layer.type === "marker"
 );
 
