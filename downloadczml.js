@@ -59,8 +59,8 @@ const html = `
 
     },false);
     document.getElementById("download").addEventListener("click", function(event){
-      event.preventDefault()
-      download(JSON.stringify(czml)
+      event.preventDefault();
+      download(JSON.stringify(czml));
     });
  
   function download(text) {
