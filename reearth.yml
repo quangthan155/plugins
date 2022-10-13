@@ -1,5 +1,5 @@
 id: reearth-plugin-example
-name: Sample plugins
+name: Peters Plugins
 version: 1.0.1
 extensions:
   - id: iss
@@ -122,3 +122,28 @@ extensions:
             - id: url
               type: string
               title: URL
+  - id: downloadczml
+    type: widget
+    name: CZML DOWNLOAD
+    schema:
+      groups:
+        - id: form
+          fields:
+            - id: modelUrl
+              type: url
+              title: Model
+              ui: image
+              availableIf:
+                field: style
+                type: string
+                value: image
+            - id: modelSize
+              type: number
+              title: Size
+              defaultValue: 1
+              min: 0
+              availableIf:
+                field: style
+                type: string
+                value: image
+      
