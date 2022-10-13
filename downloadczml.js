@@ -35,7 +35,29 @@ const html = `
       let modelUrl = propertyData.default.modelUrl;
     }
     
-  
+    document.getElementById("download").addEventListener("click", myFunction);
+    function myFunction() {
+      const czml = [ 
+        { 
+          id: "document", 
+          name: "CZML Model", 
+          version: "1.0", 
+        }, 
+        { 
+          id: "aircraft model", 
+          name: "Cesium Air", 
+          position: { 
+              cartographicDegrees: [marker.property.default.location.lat , marker.property.default.location.lng],      
+          }, 
+          model: { 
+            gltf: modelUrl,           
+            scale: modelSize,                                                
+            minimumPixelSize:  128, 
+          }, 
+        }, 
+      ];
+      saveStaticDataToFile(czml);
+    }
   });
 
   function saveStaticDataToFile(data) {
@@ -46,7 +68,7 @@ const html = `
   </script>
 `
 
-      
+
 reearth.ui.show(html);
 
 const marker = reearth.layers.find(
@@ -61,13 +83,14 @@ const marker = reearth.layers.find(
 
 
 
+
   reearth.on("update", send);
   send();
   
   function send() {
     reearth.ui.postMessage({
-      markerData: marker.property.default.location,
+      markerData: marker,
       propertyData: reearth.widget.property
     })
   }
-  console.log(marker);
+ 
