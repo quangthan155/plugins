@@ -33,7 +33,25 @@ const html = `
       let modelUrl = property.default.modelUrl;
     }
   }
- 
+  const czml = [ 
+    { 
+      id: "document", 
+      name: "CZML Model", 
+      version: "1.0", 
+    }, 
+    { 
+       id: "aircraft model", 
+       name: "Cesium Air", 
+       position: { 
+          cartographicDegrees: [marker.property.default.location.lat, marker.property.default.location.lng],      
+       }, 
+       model: { 
+        gltf: .../3d/windturbine.glb,           
+        scale: modelSize,                                                
+        minimumPixelSize:  128, 
+      }, 
+    }, 
+  ];
   </script>
 `
 
