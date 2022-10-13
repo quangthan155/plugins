@@ -22,7 +22,6 @@ const html = `
   let modelUrl;
   let lat;
   let lng;
-  const czml;
   let propertyData;
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
@@ -37,7 +36,7 @@ const html = `
     lat - e.data.markerData.lat;
     lng - e.data.markerData.lng;  
 
-    czml = [ 
+    const czml = [ 
       { 
         id: "document", 
         name: "CZML Model", 
