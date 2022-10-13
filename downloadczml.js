@@ -25,7 +25,7 @@ const html = `
 
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
-    console.log(markerData,propertyData.default);
+      console.log(e.data);
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
       
@@ -34,7 +34,7 @@ const html = `
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
-    
+
     document.getElementById("download").addEventListener("click", myFunction);
     function myFunction() {
       const czml = [ 
