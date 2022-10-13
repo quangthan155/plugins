@@ -2,7 +2,7 @@ const markerThatTitleIsReearth = reearth.layers.findAll(
   layer => layer.type === "marker"
 );
 
-console.log(markerThatTitleIsReearth);
+console.log(markerThatTitleIsReearth.property.default.location);
 // if (markerThatTitleIsReearth) {
 //   // temporally update marker location
 //   reearth.layers.overrideProperty(markerThatTitleIsReearth.id, {
