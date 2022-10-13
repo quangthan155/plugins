@@ -33,7 +33,7 @@ const html = `
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
-  
+    console.log(markerData, propertyData);
   
   });
 
