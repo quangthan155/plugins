@@ -25,16 +25,17 @@ const html = `
 
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
-      console.log(e.data);
-    if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
-      let modelSize = propertyData.default.modelSize;
+      console.log(e.data.marker.property.default.location);
+    if (propertyData.hasOwnProperty('form') && propertyData.default.modelSize) {
+      let modelSize = propertyData.form.modelSize;
       
     }
 
-    if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
-      let modelUrl = propertyData.default.modelUrl;
+    if (propertyData.hasOwnProperty('form') && propertyData.default.modelUrl) {
+      let modelUrl = propertyData.form.modelUrl;
+      
     }
-    console.log(modelUrl);
+ 
     document.getElementById("download").addEventListener("click", myFunction);
     function myFunction() {
       const czml = [ 
@@ -47,7 +48,7 @@ const html = `
           id: "aircraft model", 
           name: "Cesium Air", 
           position: { 
-              cartographicDegrees: [markerData.markerData.property.default.location.lat , markerData.markerData.property.default.location.lng],      
+              cartographicDegrees: [markerData.property.default.location.lat , markerData.property.default.location.lng],      
           }, 
           model: { 
             gltf: modelUrl,           
