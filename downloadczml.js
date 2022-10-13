@@ -83,7 +83,7 @@ console.log(marker.property.default.location);
   
   function send() {
     reearth.ui.postMessage({
-      markerData: marker,
+      markerData: marker.property.default.location,
       propertyData: reearth.widget.property
     })
   }
