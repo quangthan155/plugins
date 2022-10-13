@@ -23,7 +23,7 @@ const html = `
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
 
-    marker = e.data.marker;
+    marker = e.data.markerLayer;
     property = e.data.property;
     
     if (property.hasOwnProperty('default') && property.default.modelSize) {
