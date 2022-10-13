@@ -37,7 +37,7 @@ const html = `
     }
  
     document.getElementById("download").addEventListener("click", myFunction);
-    function myFunction() {
+    function myFunction(markerData, modelUrl, modelSize) {
       const czml = [ 
         { 
           id: "document", 
