@@ -14,7 +14,7 @@ const html = `
     </style>
 
     <div id="wrapper">
-      <button id="download">DOWNLOAD CZML FILE</button>
+      <button id="download" type="button" onclick="saveStaticDataToFile(czml);>DOWNLOAD CZML FILE</button>
     </div>
   <script>
   let marker;
@@ -46,12 +46,18 @@ const html = `
           cartographicDegrees: [marker.property.default.location.lat, marker.property.default.location.lng],      
        }, 
        model: { 
-        gltf: .../3d/windturbine.glb,           
+        gltf: modelUrl,           
         scale: modelSize,                                                
         minimumPixelSize:  128, 
       }, 
     }, 
   ];
+
+  function saveStaticDataToFile(data) {
+    var blob = new Blob([data],
+        { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "static.txt");
+  }
   </script>
 `
 
@@ -67,3 +73,5 @@ reearth.on("message", marker => {
   marker: marker;
   property: reearth.widget.property
 });
+
+≈
