@@ -73,5 +73,3 @@ reearth.on("message", marker => {
   marker: marker;
   property: reearth.widget.property
 });
-
-≈
