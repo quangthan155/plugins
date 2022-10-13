@@ -63,11 +63,7 @@ send();
 
 function send() {
   reearth.ui.postMessage({
-    marker: marker,,
+    markerLayer: marker,
     property: reearth.widget.property
   })
 }
-
-reearth.ui.postMessage({
-  marker: marker,
-  property: reearth.widget.property});
