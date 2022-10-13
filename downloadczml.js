@@ -21,8 +21,10 @@ const html = `
   let modelSize;
   let modelUrl;
   let czml;
+  let propertyData;
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
+    propertyData = e.data.propertyData;
     if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
       console.log("Size="+ propertyData.default.modelSize);
     }
