@@ -34,7 +34,7 @@ const html = `
       let modelUrl = property.default.modelUrl;
     }
   });
-  
+
   document.getElementById("download").addEventListener("click", myFunction);
 
   function myFunction() {
@@ -78,7 +78,7 @@ const marker = reearth.layers.find(
 );
 
 // Handle data to download
-reearth.on("message", marker => {
+reearth.on("message", data => {
   marker: marker;
   property: reearth.widget.property
 });
