@@ -26,14 +26,15 @@ const html = `
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
     
-    if (property.hasOwnProperty('default') && propertyData.default.modelSize) {
+    if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
     }
 
-    if (property.hasOwnProperty('default') && propertyData.default.modelUrl) {
+    if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
-
+  
+  
   });
 
   function saveStaticDataToFile(data) {
