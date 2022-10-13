@@ -21,6 +21,7 @@ const html = `
   var propertyData;
  
   window.addEventListener("message", function (e) {
+    console.log(markerData,propertyData);
     if (e.source !== parent) return;
 
     markerData = e.data.marker;
@@ -34,7 +35,8 @@ const html = `
       let modelUrl = propertyData.default.modelUrl;
     }
   
-  
+    console.log(markerData,propertyData);
+    
   });
 
   function saveStaticDataToFile(data) {
