@@ -27,10 +27,10 @@ const html = `
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
     propertyData = e.data.propertyData;
-    if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
+    if (propertyData.hasOwnProperty('form') && propertyData.form.modelSize) {
       modelSize = propertyData.default.modelSize;
     }
-    if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
+    if (propertyData.hasOwnProperty('form') && propertyData.form.modelUrl) {
       modelUrl = propertyData.default.modelUrl;
     }
   
