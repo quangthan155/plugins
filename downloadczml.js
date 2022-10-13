@@ -21,7 +21,7 @@ const html = `
   let property;
  
   window.addEventListener("message", function (e) {
-    if (e.source !== parent) return;
+   
       console.log(e.data);
 
   });
