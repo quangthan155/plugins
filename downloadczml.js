@@ -22,9 +22,9 @@ const html = `
  
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
-
+    console.log(e.data);
     markerData = e.data.markerLayer;
-    propertyData = e.data.property;
+    propertyData = e.data.propertyData;
     
     if (property.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
