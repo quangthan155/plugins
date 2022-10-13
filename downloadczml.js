@@ -15,7 +15,7 @@ const html = `
 
     <div id="wrapper">
     <div id="msg"></div>
-      <button id="download" type="button" onclick=download()>DOWNLOAD CZML FILE</button>
+      <button id="download" type="button" onclick="download()">DOWNLOAD CZML FILE</button>
     </div>
   <script>
   let modelSize;
