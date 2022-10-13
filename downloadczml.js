@@ -24,7 +24,7 @@ const html = `
     if (e.source !== parent) return;
 
     markerData = e.data.marker;
-    propertyData = e.data.property;
+    propertyData = e.data.propertyData;
     
     if (property.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
