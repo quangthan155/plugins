@@ -22,9 +22,9 @@ const html = `
  
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
-    console.log(e.data);
-    markerData = e.data.markerLayer;
-    propertyData = e.data.propertyData;
+
+    markerData = e.data.marker;
+    propertyData = e.data.property;
     
     if (property.hasOwnProperty('default') && propertyData.default.modelSize) {
       let modelSize = propertyData.default.modelSize;
@@ -33,8 +33,7 @@ const html = `
     if (property.hasOwnProperty('default') && propertyData.default.modelUrl) {
       let modelUrl = propertyData.default.modelUrl;
     }
-  });
-  console.log(markerData, propertyData);
+  
 
 
   function saveStaticDataToFile(data) {
@@ -58,12 +57,6 @@ const marker = reearth.layers.find(
 //   property: reearth.widget.property
 // });
 
-reearth.on("update", send);
-send();
-console.log(marker, reearth.widget.property);
-function send() {
-  reearth.ui.postMessage({
-    markerLayer: marker,
-    property: reearth.widget.property
-  })
-}
+reearth.ui.postMessage({
+  markerData: marker,
+  propertyData: reearth.widget.property});
