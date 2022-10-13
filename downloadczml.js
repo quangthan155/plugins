@@ -25,7 +25,7 @@ const html = `
 
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
-      console.log(markerData);
+
     if (propertyData.hasOwnProperty('form') && propertyData.default.modelSize) {
       let modelSize = propertyData.form.modelSize;
       
@@ -48,7 +48,7 @@ const html = `
           id: "aircraft model", 
           name: "Cesium Air", 
           position: { 
-              cartographicDegrees: [markerData.lat , markerData.lng],      
+              cartographicDegrees: [100 , 100],      
           }, 
           model: { 
             gltf: modelUrl,           
@@ -57,7 +57,7 @@ const html = `
           }, 
         }, 
       ];
-      console.log(czml);
+
       saveStaticDataToFile(czml);
     }
   });
@@ -87,4 +87,3 @@ console.log(marker.property.default.location);
       propertyData: reearth.widget.property
     })
   }
- 
