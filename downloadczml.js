@@ -17,15 +17,22 @@ const html = `
       <button id="download">DOWNLOAD CZML FILE</button>
     </div>
   <script>
-  marker = e.data.marker;
-  property = e.data.property;
-  if (property.hasOwnProperty('default') && property.default.modelSize) {
-    let modelSize = property.default.modelSize;
+  let marker;
+  let property;
+  window.addEventListener("message", function (e) {
+    if (e.source !== parent) return;
+
+    marker = e.data.marker;
+    property = e.data.property;
+
+    if (property.hasOwnProperty('default') && property.default.modelSize) {
+      let modelSize = property.default.modelSize;
     }
 
-  if (property.hasOwnProperty('default') && property.default.modelUrl) {
-    let modelUrl = property.default.modelUrl;
+    if (property.hasOwnProperty('default') && property.default.modelUrl) {
+      let modelUrl = property.default.modelUrl;
     }
+  }
   const czml = [ 
     { 
       id: "document", 
