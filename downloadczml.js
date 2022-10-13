@@ -17,11 +17,10 @@ const html = `
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
   <script>
-  var markerData;
-  var propertyData;
+  let markerData;
+  let propertyData;
  
   window.addEventListener("message", function (e) {
-    console.log(markerData,propertyData);
     if (e.source !== parent) return;
 
     markerData = e.data.marker;
@@ -35,8 +34,7 @@ const html = `
       let modelUrl = propertyData.default.modelUrl;
     }
   
-    console.log(markerData,propertyData);
-    
+  
   });
 
   function saveStaticDataToFile(data) {
@@ -60,6 +58,13 @@ const marker = reearth.layers.find(
 //   property: reearth.widget.property
 // });
 
-reearth.ui.postMessage({
-  markerData: marker,
-  propertyData: reearth.widget.property});
+
+  reearth.on("update", send);
+  send();
+  
+  function send() {
+    reearth.ui.postMessage({
+      markerData: marker,
+      propertyData: reearth.widget.property
+    })
+  }
