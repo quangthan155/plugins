@@ -25,7 +25,7 @@ const html = `
 
     markerData = e.data.marker;
     propertyData = e.data.propertyData;
-      console.log(e.data.marker.property.default.location);
+      console.log(markerData);
     if (propertyData.hasOwnProperty('form') && propertyData.default.modelSize) {
       let modelSize = propertyData.form.modelSize;
       
