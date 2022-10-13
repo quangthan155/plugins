@@ -47,7 +47,7 @@ const html = `
           id: "aircraft model", 
           name: "Cesium Air", 
           position: { 
-              cartographicDegrees: [marker.property.default.location.lat , marker.property.default.location.lng],      
+              cartographicDegrees: [markerData.property.default.location.lat , markerData.property.default.location.lng],      
           }, 
           model: { 
             gltf: modelUrl,           
@@ -56,6 +56,7 @@ const html = `
           }, 
         }, 
       ];
+      console.log(czml);
       saveStaticDataToFile(czml);
     }
   });
@@ -74,14 +75,6 @@ reearth.ui.show(html);
 const marker = reearth.layers.find(
   layer => layer.type === "marker"
 );
-
-// Handle data to download
-// reearth.on("message", data => {
-//   marker: marker;
-//   property: reearth.widget.property
-// });
-
-
 
 
   reearth.on("update", send);
