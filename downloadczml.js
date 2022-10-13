@@ -17,6 +17,7 @@ const html = `
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
 
+`
 
       
 reearth.ui.show(html);
