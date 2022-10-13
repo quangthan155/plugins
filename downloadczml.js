@@ -33,7 +33,7 @@ const html = `
       let modelUrl = property.default.modelUrl;
     }
   }
-  const czml = [ 
+  const czml = "[ 
     { 
       id: "document", 
       name: "CZML Model", 
@@ -51,7 +51,7 @@ const html = `
         minimumPixelSize:  128, 
       }, 
     }, 
-  ];
+  ]";
 
   function saveStaticDataToFile(data) {
     var blob = new Blob([data],
