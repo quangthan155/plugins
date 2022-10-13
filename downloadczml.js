@@ -17,8 +17,8 @@ const html = `
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
   <script>
-  let markerData;
-  let propertyData;
+  var markerData;
+  var propertyData;
  
   window.addEventListener("message", function (e) {
     if (e.source !== parent) return;
