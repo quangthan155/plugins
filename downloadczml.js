@@ -18,46 +18,48 @@ const html = `
       <button id="download" type="button">DOWNLOAD CZML FILE</button>
     </div>
   <script>
-
+  let modelSize;
+  let modelUrl;
+  let lat;
+  let lng;
+  let czml;
+  let propertyData;
+  window.addEventListener("message", function (e) {
+    if (e.source !== parent) return;
+    propertyData = e.data.propertyData;
+    if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
+      modelSize = propertyData.default.modelSize;
+    }
+    if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
+      modelUrl = propertyData.default.modelUrl;
+    }
+  
+    lat - e.data.markerData.lat;
+    lng - e.data.markerData.lng;  
+    });
+    
+    czml = [ 
+      { 
+        id: "document", 
+        name: "CZML Model", 
+        version: "1.0", 
+      }, 
+      { 
+        id: "aircraft model", 
+        name: "Cesium Air", 
+        position: { 
+            cartographicDegrees: [ lat, lng],      
+        }, 
+        model: { 
+          gltf: modelUrl,           
+          scale: modelSize,                                     
+          minimumPixelSize:  128, 
+        }, 
+      }, 
+    ];
 
   document.getElementById("download").addEventListener("click", download("aa.czml", JSON.stringify(czml)));
   function download(filename, text) {
-    let modelSize;
-    let modelUrl;
-    let czml;
-    let propertyData;
-    window.addEventListener("message", function (e) {
-      if (e.source !== parent) return;
-      propertyData = e.data.propertyData;
-      if (propertyData.hasOwnProperty('default') && propertyData.default.modelSize) {
-        console.log("Size="+ propertyData.default.modelSize);
-      }
-      if (propertyData.hasOwnProperty('default') && propertyData.default.modelUrl) {
-        console.log("Model="+ propertyData.default.modelUrl);
-      }
-    
-  
-         czml = [ 
-          { 
-            id: "document", 
-            name: "CZML Model", 
-            version: "1.0", 
-          }, 
-          { 
-            id: "aircraft model", 
-            name: "Cesium Air", 
-            position: { 
-                cartographicDegrees: [e.data.markerData.lat , e.data.markerData.lng],      
-            }, 
-            model: { 
-              gltf: modelUrl,           
-              scale: modelSize,                                     
-              minimumPixelSize:  128, 
-            }, 
-          }, 
-        ];
-      });
-      
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
