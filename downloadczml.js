@@ -60,6 +60,7 @@ const marker = reearth.layers.find(
 // });
 
 
+
   reearth.on("update", send);
   send();
   
@@ -69,3 +70,4 @@ const marker = reearth.layers.find(
       propertyData: reearth.widget.property
     })
   }
+  console.log(marker);
