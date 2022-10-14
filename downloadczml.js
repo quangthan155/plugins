@@ -47,7 +47,7 @@ const html = `
         id: "aircraft model", 
         name: "Cesium Air", 
         position: { 
-            cartographicDegrees: [ lat, lng],      
+            cartographicDegrees: [ lat, lng, 10000],      
         }, 
         model: { 
           gltf: modelUrl,           
@@ -58,6 +58,7 @@ const html = `
     ];
 
     },false);
+
     document.getElementById("download").addEventListener("click", function(event){
       event.preventDefault();
       download(JSON.stringify(czml));
